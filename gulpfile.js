@@ -16,7 +16,7 @@ elixir(function(mix) {
     mix.styles([
         "font-awesome.min.css",
         "main.css"
-    ], 'public/css/main.css');
+    ], 'public/css/app.css');
     mix.scripts([
         'jquery.min.js',
         'jquery.dropotron.min.js',
@@ -24,6 +24,7 @@ elixir(function(mix) {
         'skel.min.js',
         'util.js',
         'main.js'
-    ], 'public/js/main.js');
-});
+    ], 'public/js/app.js');
 
+    mix.version(['css/app.css', 'js/app.js']);
+});
