@@ -38,7 +38,7 @@
 				<div class="row uniform">
 					<div class="12u">
 						<ul class="actions align-center">
-							<li><input type="submit" value="Send Message" /></li>
+							<li>{!! Form::submit('Send message') !!}</li>
 						</ul>
 					</div>
 				</div>

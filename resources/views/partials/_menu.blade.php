@@ -13,7 +13,7 @@
                 <li>
                     <a href="#" class="icon fa-angle-down">{{ Auth::user()->username }}</a>
                     <ul>
-						<li><a href="#" class="icon fa-user"> Account</a></li>
+						<li><a href="{{ route('account') }}" class="icon fa-user"> Account</a></li>
                         @if(Auth::user()->admin)
                             <li><a href="{{ route("logout") }}" class="icon fa-briefcase"> Admin</a></li>
                         @endif

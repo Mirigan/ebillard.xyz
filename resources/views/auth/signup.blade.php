@@ -17,7 +17,7 @@
                 <p>{{ $error }}</p>
             @endif
 
-            {!! Form::open(array('route' => 'doSignup')) !!}
+            {!! Form::open(array('route' => 'doSignup', 'files' => true)) !!}
                 <div class="row uniform 50%">
 					<div class="6u 12u(mobilep)">
                         {!! Form::text('username', '', array('placeholder' => 'Username', 'required' => 'true')); !!}
@@ -37,10 +37,10 @@
                 </div>
 
                 <div class="row uniform 50%">
-                    <div class="6u 12u(mobilep)">
-                        {!! Form::label('avatar', 'Avatar : ', array('class' => 'align-right')); !!}
+                    <div class="1u 12u(mobilep)">
+                        {!! Form::label('avatar', 'Avatar : '); !!}
                     </div>
-                    <div class="6u 12u(mobilep)">
+                    <div class="11u 12u(mobilep)">
                         {!! Form::file('avatar'); !!}
 					</div>
                 </div>
@@ -49,7 +49,7 @@
 					<div class="12u">
 						<ul class="actions">
 							<li>{!! Form::submit('Sign up') !!}</li>
-							<li><input type="reset" class="alt" value="Reset"></li>
+							<li>{!! Form::reset('Reset', array('class' => 'alt')) !!}</li>
 						</ul>
 					</div>
 				</div>

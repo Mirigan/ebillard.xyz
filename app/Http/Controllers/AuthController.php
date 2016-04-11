@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Image;
 
 /**
  * @Middleware("web")
@@ -62,25 +63,33 @@ class AuthController extends Controller
     */
     public function doSignup(Request $request)
     {
-        $input = $request->only('username', 'email', 'password', 'password_confirmation', 'avatar');
+        // $input = $request->only('username', 'email', 'password', 'password_confirmation', 'avatar');
 
-        if($input['password_confirmation'] !== $input['password']){
+        if($request['password_confirmation'] !== $request['password']){
             return view('auth.signup', ['error' => 'Passwords don\'t match']);
-        } elseif(User::where('username', '=', $input['username'])->exists())
+        } elseif(User::where('username', '=', $request['username'])->exists())
         {
             return view('auth.signup', ['error' => 'Username already used']);
-        } elseif (User::where('email', '=', $input['email'])->exists())
+        } elseif (User::where('email', '=', $request['email'])->exists())
         {
             return view('auth.signup', ['error' => 'Email already used']);
         }
 
-        $tmp = $input['password'];
-        $input['password'] = bcrypt($input['password']);
+        $tmp = bcrypt($request['password']);
+        $user = User::create(['username' => $request['username'], 'email' => $request['email'], 'avatar' => $request['avatar'], 'password' => $tmp]);
+        if($request->hasFile('avatar')){
+            Image::make($request->file('avatar'))->resize(75, 75,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save('avatars/'.$request['username'].'_avatar.'.$request->file('avatar')->getClientOriginalExtension());
+            $user->avatar = 'avatars/'.$request['username'].'_avatar.'.$request->file('avatar')->getClientOriginalExtension();
+        } else {
+            $user->avatar = 'avatars/default.jpg';
+        }
 
-        $user = User::create($input);
         $user->save();
 
-        Auth::attempt(['username' => $input['username'], 'password' => $tmp]);
+        Auth::attempt(['username' => $user->username, 'password' => $request['password']]);
         return redirect()->intended('/');
     }
 

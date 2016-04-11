@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>index | Ebillard.xyz</title>
+        <title>Index | Ebillard.xyz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
     </head>
@@ -23,9 +23,9 @@
                         <li>
                             <a href="#" class="icon fa-angle-down">{{ Auth::user()->username }}</a>
                             <ul>
-                                <li><a href="#" class="icon fa-user"> Account</a></li>
+                                <li><a href="{{ route("account") }}" class="icon fa-user"> Account</a></li>
                                 @if(Auth::user()->admin)
-                                    <li><a href="{{ route("logout") }}" class="icon fa-briefcase"> Admin</a></li>
+                                    <li><a href="{{ route("admin.index") }}" class="icon fa-briefcase"> Admin</a></li>
                                 @endif
                                 <li><a href="{{ route("logout") }}" class="icon fa-sign-out"> Logout</a></li>
                             </ul>
@@ -39,7 +39,11 @@
                 <h2>Emilien Billard</h2>
                 <p>Php, Rails, Angular ...</p>
                 <ul class="actions">
-					<li><a href="{{ route("signup") }}" class="button special">Sign Up</a></li>
+                    @if(Auth::check())
+                        <li><a href="{{ route("blog.index") }}" class="button special">My Blog</a></li>
+                    @else
+                        <li><a href="{{ route("signup") }}" class="button special">Sign Up</a></li>
+                    @endif
 					<li><a href="{{ route("contact") }}" class="button">Contact Me</a></li>
 				</ul>
             </section>

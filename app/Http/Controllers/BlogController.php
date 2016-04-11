@@ -13,7 +13,7 @@ use App\Http\Requests;
 class BlogController extends Controller
 {
     /**
-    * get index page of the blog
+    * Get index page of the blog
     *
     * @Get("/", as="blog.index")
     */

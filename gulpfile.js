@@ -15,7 +15,8 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.styles([
         "font-awesome.min.css",
-        "main.css"
+        "main.css",
+        "style.css"
     ], 'public/css/app.css');
     mix.scripts([
         'jquery.min.js',
