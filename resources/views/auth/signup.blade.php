@@ -1,0 +1,60 @@
+@extends('layouts.skeleton')
+
+@section('title')
+    Sign up
+@endsection
+
+@section('content')
+
+    <!-- Main -->
+    <section id="main" class="container">
+		<header>
+			<h2>Sign up</h2>
+            <p>Sign up to react on the blog</p>
+		</header>
+		<div class="box">
+            @if($error != null)
+                <p>{{ $error }}</p>
+            @endif
+
+            {!! Form::open(array('route' => 'doSignup')) !!}
+                <div class="row uniform 50%">
+					<div class="6u 12u(mobilep)">
+                        {!! Form::text('username', '', array('placeholder' => 'Username', 'required' => 'true')); !!}
+					</div>
+                    <div class="6u 12u(mobilep)">
+                        {!! Form::email('email', '', array('placeholder' => 'Email', 'required' => 'true')); !!}
+					</div>
+				</div>
+
+                <div class="row uniform 50%">
+                    <div class="6u 12u(mobilep)">
+                        {!! Form::password('password', array('placeholder' => 'Password', 'required' => 'true')); !!}
+					</div>
+                    <div class="6u 12u(mobilep)">
+                        {!! Form::password('password_confirmation', array('placeholder' => 'Confirm Password', 'required' => 'true')); !!}
+					</div>
+                </div>
+
+                <div class="row uniform 50%">
+                    <div class="6u 12u(mobilep)">
+                        {!! Form::label('avatar', 'Avatar : ', array('class' => 'align-right')); !!}
+                    </div>
+                    <div class="6u 12u(mobilep)">
+                        {!! Form::file('avatar'); !!}
+					</div>
+                </div>
+
+				<div class="row uniform">
+					<div class="12u">
+						<ul class="actions">
+							<li>{!! Form::submit('Sign up') !!}</li>
+							<li><input type="reset" class="alt" value="Reset"></li>
+						</ul>
+					</div>
+				</div>
+            {!! Form::close() !!}
+		</div>
+	</section>
+
+@endsection
