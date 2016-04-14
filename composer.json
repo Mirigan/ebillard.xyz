@@ -10,7 +10,8 @@
         "laravelcollective/annotations": "5.2.*",
         "laravelcollective/html": "5.2.*",
         "barryvdh/laravel-debugbar": "^2.2",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "nesbot/carbon": "^1.21"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

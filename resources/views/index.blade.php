@@ -13,21 +13,21 @@
                 <h1><a href="{{ route("index") }}">eBillard.xyz</a></h1>
                 <nav id="nav">
                     <ul>
-                        <li><a href="{{ route("index") }}">Home</a></li>
+                        <li><a href="{{ route("index") }}">Accueil</a></li>
                         <li><a href="{{ route("blog.index") }}">Blog</a></li>
-                        <li><a href="{{ route("contact") }}">Contact Me</a></li>
+                        <li><a href="{{ route("contact") }}">Me contacter</a></li>
                         @if(Auth::guest())
-                            <li><a href="{{ route("login") }}">Sign In</a></li>
-                            <li><a href="{{ route("signup") }}" class="button">Sign Up</a></li>
+                            <li><a href="{{ route("login") }}">Connexion</a></li>
+                            <li><a href="{{ route("signup") }}" class="button">Créer un compte</a></li>
                         @else
                         <li>
                             <a href="#" class="icon fa-angle-down">{{ Auth::user()->username }}</a>
                             <ul>
-                                <li><a href="{{ route("account") }}" class="icon fa-user"> Account</a></li>
+                                <li><a href="{{ route("account") }}" class="icon fa-user"> Mon compte</a></li>
                                 @if(Auth::user()->admin)
                                     <li><a href="{{ route("admin.index") }}" class="icon fa-briefcase"> Admin</a></li>
                                 @endif
-                                <li><a href="{{ route("logout") }}" class="icon fa-sign-out"> Logout</a></li>
+                                <li><a href="{{ route("logout") }}" class="icon fa-sign-out"> Déconnexion</a></li>
                             </ul>
                         </li>
                         @endif
@@ -37,14 +37,14 @@
             <!-- Banner -->
             <section id="banner">
                 <h2>Emilien Billard</h2>
-                <p>Php, Rails, Angular ...</p>
+                <p>Laraval, Rails, Angular, TDD ...</p>
                 <ul class="actions">
                     @if(Auth::check())
-                        <li><a href="{{ route("blog.index") }}" class="button special">My Blog</a></li>
+                        <li><a href="{{ route("blog.index") }}" class="button special">Mon Blog</a></li>
                     @else
-                        <li><a href="{{ route("signup") }}" class="button special">Sign Up</a></li>
+                        <li><a href="{{ route("signup") }}" class="button special">Créer un compte</a></li>
                     @endif
-					<li><a href="{{ route("contact") }}" class="button">Contact Me</a></li>
+					<li><a href="{{ route("contact") }}" class="button">Me contacter</a></li>
 				</ul>
             </section>
             <!-- Main -->
@@ -53,31 +53,11 @@
                 <section class="box special">
                     <header class="major">
                         <h2>
-                            Présentation en une phrase
+                            Bienvenur sur mon site et découvrez qui je suis
                             <br />
                             2ème ligne
                         </h2>
                         <p>Une deuxième phrase ? Je ne sais pas par exemple le fait que j'utilise les method agile ! Pouvoir choisir aussi les différentes photos, mais si possible faire que cette phrase fasse la ligne entière</p>
-                        @if(Session::has('success'))
-                            <p>
-                                {!! Session::pull('success') !!}
-                            </p>
-                        @endif
-                        @if(Session::has('info'))
-                            <p>
-                                {!! Session::pull('info') !!}
-                            </p>
-                        @endif
-                        @if(Session::has('warning'))
-                            <p>
-                                {!! Session::pull('warning') !!}
-                            </p>
-                        @endif
-                        @if(Session::has('danger'))
-                            <p>
-                                {!! Session::pull('danger') !!}
-                            </p>
-                        @endif
                     </header>
                     <span class="image featured">{{ Html::image('images/pic01.jpg"') }}</span>
                 </section>
@@ -113,19 +93,21 @@
                     <div class="6u 12u(narrower)">
 
                         <section class="box special">
-                            <span class="image featured"><img src="images/pic02.jpg" alt="" /></span>
-                            <h3>Un projet</h3>
-                            <p>Car c'est qui fait que l'on peut dire que je suis un bon développeur ou non. Mes réalisations!! (DynamicScreen)</p>
+                            <span class="image featured">{{ Html::image('images/index/DynamicScreen_logo.png') }}</span>
+                            <h3>Dynamic Screen</h3>
+                            <p>
+                                Projet de fin d'étude pour ma licence DAWIN, réalisé avec: Rémi Bertin, Marty Lamoureux et Simon Lejeune.
+                            </p>
                             <ul class="actions">
-                                <li><a href="#" class="button alt">Learn More</a></li>
+                                <li><a target="_blank" href="http://dynamicscreen.xyz/" class="button alt">En apprendre plus !</a></li>
                             </ul>
                         </section>
 
                     </div>
-                    <div class="6u 12u(narrower)">
+                    {{-- <div class="6u 12u(narrower)">
 
                         <section class="box special">
-                            <span class="image featured"><img src="images/pic03.jpg" alt="" /></span>
+                            <span class="image featured">{{ Html::image('images/index/DynamicScreen_logo.png') }}</span>
                             <h3>Un autre projet</h3>
                             <p>Je ne sais pas hazard se que je fait en ce moment.</p>
                             <ul class="actions">
@@ -133,7 +115,7 @@
                             </ul>
                         </section>
 
-                    </div>
+                    </div> --}}
                 </div>
 
             </section>

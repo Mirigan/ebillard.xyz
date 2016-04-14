@@ -1,7 +1,7 @@
 @extends('layouts.skeleton')
 
 @section('title')
-    Editer mon profile
+    Edit profile
 @endsection
 
 @section('content')
@@ -9,18 +9,18 @@
     <section id="main" class="container">
 
         <header>
-			<h2>Editer mon profile</h2>
+			<h2>Admin | Edit {{ $user->username }}'s profile</h2>
 		</header>
 
         <div class="box 12u">
             @if($error != null)
                 <p>{{ $error }}</p>
             @endif
-            {!! Form::open(array('route' => 'account.edit', 'files' => true)) !!}
+            {!! Form::open(array('route' => array('admin.user.doEdit', $user->id), 'files' => true)) !!}
                 <div class="row uniform 50%">
                     <div class="6u 12u(mobilep)">
                         <h4>Username :</h4>
-                        <p>{!! Form::text('username', $user->username, array('placeholder' => 'Nom d\'utilisateur', 'required' => 'true')); !!}</p>
+                        <p>{!! Form::text('username', $user->username, array('placeholder' => 'Username', 'required' => 'true')); !!}</p>
                     </div>
                     <div class="6u 12u(mobilep)">
                         <h4>Email :</h4>
@@ -35,10 +35,10 @@
 
                 <div class="row uniform 50%">
                     <div class="6u 12u(mobilep)">
-                        {!! Form::password('password', array('placeholder' => 'Nouveau mot de passe')); !!}
+                        {!! Form::password('password', array('placeholder' => 'Password')); !!}
 					</div>
                     <div class="6u 12u(mobilep)">
-                        {!! Form::password('password_confirmation', array('placeholder' => 'Confirmez votre mot de passe')); !!}
+                        {!! Form::password('password_confirmation', array('placeholder' => 'Confirm Password')); !!}
 					</div>
                 </div>
                 <div class="row uniform">
@@ -50,7 +50,7 @@
                             @if($user->avatar != 'avatars/default.jpg')
                                 <div class="10u 12u(mobilep)">
                                     {!! Form::checkbox('deleteAvatar', 'true', false, array('id' => 1)); !!}
-                                    {!! Form::label('true', 'Avatar par défault'); !!}
+                                    {!! Form::label('true', 'No Avatar'); !!}
                                 </div>
                             @endif
                         </div>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="row uniform align-center">
                     <div class="12u">
-                        {!! Form::submit('Enregistrer', array('class' => 'alt')) !!}
+                        {!! Form::submit('Save', array('class' => 'alt')) !!}
                     </div>
                 </div>
             {!! Form::close() !!}

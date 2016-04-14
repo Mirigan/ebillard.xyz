@@ -8,14 +8,14 @@
     <!-- Main -->
     <section id="main" class="container 75%">
 		<header>
-			<h2>Contact Me</h2>
-			<p>Tell me what you think about my web site.</p>
+			<h2>Me Contacter</h2>
+			<p>Dit moi se que vous pensez de mon site, tout les retours sont intéressants.</p>
 		</header>
 		<div class="box">
             {!! Form::open(array('route' => 'doContact')) !!}
 				<div class="row uniform 50%">
 					<div class="6u 12u(mobilep)">
-                        {!! Form::text('name', '', array('placeholder' => 'Name', 'required' => 'true')); !!}
+                        {!! Form::text('name', '', array('placeholder' => 'Nom', 'required' => 'true')); !!}
 					</div>
 					<div class="6u 12u(mobilep)">
                         @if(Auth::check())
@@ -27,18 +27,18 @@
 				</div>
 				<div class="row uniform 50%">
 					<div class="12u">
-                        {!! Form::text('subject', '', array('placeholder' => 'Subject', 'required' => 'true')); !!}
+                        {!! Form::text('subject', '', array('placeholder' => 'Sujet', 'required' => 'true')); !!}
 					</div>
 				</div>
 				<div class="row uniform 50%">
 					<div class="12u">
-                        {!! Form::textarea('message', '', array('placeholder' => 'Enter your message', 'rows' => "6", 'required' => 'true')); !!}
+                        {!! Form::textarea('content', '', array('placeholder' => 'Entrez votre message', 'rows' => "6", 'required' => 'true')); !!}
 					</div>
 				</div>
 				<div class="row uniform">
 					<div class="12u">
 						<ul class="actions align-center">
-							<li>{!! Form::submit('Send message') !!}</li>
+							<li>{!! Form::submit('Envoyer') !!}</li>
 						</ul>
 					</div>
 				</div>

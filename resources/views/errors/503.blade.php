@@ -1,47 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('layouts.skeleton')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title')
+    Be right back
+@endsection
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('content')
+    <!-- Main -->
+    <section id="main" class="container">
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+        <header>
+			<h2>Be right back</h2>
+            <p>Error 503</p>
+		</header>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+        <div class="box 12u 12u(mobilep)">
+			<h3>Site en maintenance</h3>
+		</div>
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
-        </div>
-    </body>
-</html>
+    </section>
+@endsection

@@ -13,15 +13,10 @@ use Auth;
 /**
  * @Controller(prefix="account")
  * @Middleware("web")
+ * @Middleware("auth")
  */
 class AccountController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
     * Get account page
     *

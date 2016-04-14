@@ -9,13 +9,10 @@ use Image;
 
 /**
  * @Middleware("web")
+ * @Middleware("guest", except={"logout"})
  */
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'logout']);
-    }
 
     /**
     * Get login page.
@@ -76,15 +73,13 @@ class AuthController extends Controller
         }
 
         $tmp = bcrypt($request['password']);
-        $user = User::create(['username' => $request['username'], 'email' => $request['email'], 'avatar' => $request['avatar'], 'password' => $tmp]);
+        $user = User::create(['username' => $request['username'], 'email' => $request['email'], 'avatar' => $request['avatar'], 'password' => $tmp, 'avatar' => 'avatars/default.jpg']);
         if($request->hasFile('avatar')){
             Image::make($request->file('avatar'))->resize(75, 75,
                 function ($constraint) {
                     $constraint->aspectRatio();
                 })->save('avatars/'.$request['username'].'_avatar.'.$request->file('avatar')->getClientOriginalExtension());
             $user->avatar = 'avatars/'.$request['username'].'_avatar.'.$request->file('avatar')->getClientOriginalExtension();
-        } else {
-            $user->avatar = 'avatars/default.jpg';
         }
 
         $user->save();
@@ -97,6 +92,7 @@ class AuthController extends Controller
     * Log the user out.
     *
     * @Get("logout", as="logout")
+    * @Middleware("auth")
     *
     * @return Response
     */
