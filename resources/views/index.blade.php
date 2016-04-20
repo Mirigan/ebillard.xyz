@@ -58,8 +58,10 @@
                             Diplômé de la licence professionnel DAWIN de Bordeaux.
                         </h2>
                         <p>
-                            Une deuxième phrase ? Je ne sais pas par exemple le fait que j'utilise les method agile!
-                            Pouvoir choisir aussi les différentes photos, mais si possible faire que cette phrase fasse la ligne entière
+                            Jeune diplomé de 20 ans, vivant à Dublin afin d'améliorer mon anglais,
+                            de rencontrer de nouvelle personnes et découvrir une nouvelle culture.
+                            <br/>
+                            Co-fondateur du projet DynamicScreen
                         </p>
                     </header>
                     <span class="image featured">{{ Html::image('images/pic01.jpg"') }}</span>
