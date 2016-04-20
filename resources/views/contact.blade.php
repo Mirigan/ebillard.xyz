@@ -1,7 +1,7 @@
 @extends('layouts.skeleton')
 
 @section('title')
-    Contact Me
+    Me Contacter
 @endsection
 
 @section('content')

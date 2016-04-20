@@ -18,8 +18,6 @@
 		</header>
 
         <div class="box 12u">
-
-
             <div class="row uniform 50%">
                 <div class="6u 12u(mobilep)">
                     <h4>Username :</h4>

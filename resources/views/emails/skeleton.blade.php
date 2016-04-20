@@ -191,18 +191,9 @@ width: 100%;
                         <tr>
                             <td>
                                 @yield('content')
-                                <!-- button -->
-                                <!-- <table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
-                                    <tr>
-                                        <td>
-                                            <a href="https://github.com/leemunroe/html-email-template">View the source and instructions on GitHub</a>
-                                        </td>
-                                    </tr>
-                                </table> -->
-                                <!-- /button -->
-                                <!-- <p>Feel free to use, copy, modify this email template as you wish.</p> -->
+                                
                                 <p>Thanks, have a lovely day.</p>
-                                <p><a href="http://twitter.com/EmilienBillard">Follow @EmilienBillard on Twitter</a></p>
+                                <p>Follow <a href="http://twitter.com/EmilienBillard">@EmilienBillard</a> on Twitter</p>
                             </td>
                         </tr>
                     </table>

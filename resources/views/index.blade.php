@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index | Ebillard.xyz</title>
+        <title>Accueil | Ebillard.xyz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
     </head>
@@ -53,11 +53,14 @@
                 <section class="box special">
                     <header class="major">
                         <h2>
-                            Bienvenur sur mon site et découvrez qui je suis
-                            <br />
-                            2ème ligne
+                            Développeur web,
+                            <br/>
+                            Diplômé de la licence professionnel DAWIN de Bordeaux.
                         </h2>
-                        <p>Une deuxième phrase ? Je ne sais pas par exemple le fait que j'utilise les method agile ! Pouvoir choisir aussi les différentes photos, mais si possible faire que cette phrase fasse la ligne entière</p>
+                        <p>
+                            Une deuxième phrase ? Je ne sais pas par exemple le fait que j'utilise les method agile!
+                            Pouvoir choisir aussi les différentes photos, mais si possible faire que cette phrase fasse la ligne entière
+                        </p>
                     </header>
                     <span class="image featured">{{ Html::image('images/pic01.jpg"') }}</span>
                 </section>
@@ -66,25 +69,25 @@
                     <div class="features-row">
                         <section>
                             <span class="icon major fa-bolt accent2"></span>
-                            <h3>Longboard</h3>
-                            <p>Mettre une petite phrase sur la longboard.</p>
+                            <h3>Dynamique</h3>
+                            <p>Dynamique et toujours enthousiaste pour expérimenter de nouvelles façons de travailler, je sais aussi très bien m'adapter a toute sorte d'environement de travail, afin de rester productif et de contribuer a la bonne ambiance dans l'équipe.</p>
                         </section>
                         <section>
-                            <span class="icon major fa-area-chart accent3"></span>
+                            <span class="icon major fa-laptop accent3"></span>
                             <h3>Passionné</h3>
-                            <p>Oui je reste quand même une personne passionné par mon boulot</p>
+                            <p>Passionné par mon travail, je reste au courant des nouveautés en grande partie grace a Twitter mais aussi en lisant régulièrement des blogs. Je n'hésite pas aussi a lire ou relire des livre sur certaines façon de coder, comme "The clean code" ou encore "Test-driven Developpement".</p>
                         </section>
                     </div>
                     <div class="features-row">
                         <section>
                             <span class="icon major fa-cloud accent4"></span>
-                            <h3>Gamer</h3>
-                            <p>Mais aussi une personne qui joue au jeux vidéos pour travailler ses réflex, et bien se marrer avec les potes car bon c'est quand même bien marrantde jouer avec les copains</p>
+                            <h3>Après le travail</h3>
+                            <p>Car il n'y a pas que le travail dans la vie, j'aime aussi sortir avec mes amis afin de se détendre et de se changer les idées. Je privilégie aussi le longboard pour me déplacer. Adèpte aussi de jeux vidéos depuis mon enfance, j'essaye toujours de jouer avec des amis afin de travailler mon esprit d'équipe.</p>
                         </section>
                         <section>
-                            <span class="icon major fa-lock accent5"></span>
-                            <h3>Voyageur</h3>
-                            <p>Mais j'aime me balader dans d'autre pays et voir des paysages toujours plus beaux et rencontrer des gens de toutes les cultures, car c'est ce qui forge la vie aussi</p>
+                            <span class="icon major fa-plane accent5"></span>
+                            <h3>Anglophone</h3>
+                            <p>Après avoir passé 4 mois a Dublin pour mon stage de fin d'étude, je suis totalement autonome et capable aussi bien de parler un anglais courent qu'un anglais plus technique.</p>
                         </section>
                     </div>
                 </section>
@@ -117,6 +120,18 @@
 
                     </div> --}}
                 </div>
+
+                <div class="box 12u">
+                    <h3>Autre faits</h3>
+					<div class="row">
+						<div class="12u">
+							<ul class="alt">
+								<li>Pratique du basket durant 12 ans (en Corrèze) dont 4 où j'ai aussi arbitré.</li>
+								{{-- <li>Pratique </li> --}}
+							</ul>
+						</div>
+					</div>
+        		</div>
 
             </section>
             @include('partials._footer')

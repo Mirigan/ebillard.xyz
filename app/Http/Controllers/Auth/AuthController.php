@@ -2,71 +2,104 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
+use App\User;
+use Image;
 
+/**
+ * @Middleware("web")
+ * @Middleware("guest", except={"logout"})
+ */
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
+
+    /**
+    * Get login page.
+    *
+    * @Get("login", as="login")
+    *
+    * @return Response
     */
-
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function login()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        return view('auth.login', ['error' => null]);
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Handle an authentication attempt.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @Post("login", as="doLogin")
+     *
+     * @return Response
      */
-    protected function validator(array $data)
+    public function authenticate(Request $request)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        $input = $request->only('username', 'password');
+        if(Auth::attempt(['username' => $input['username'], 'password' => $input['password']])) {
+            return redirect()->intended('/');
+        } else {
+            return view('auth.login', ['error' => 'Bad Credentials']);
+        }
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+    * Get sign up page
+    *
+    * @Get("sign-up", as="signup")
+    */
+    public function getSignup()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        return view('auth.signup', ['error' => null]);
+    }
+
+    /**
+    * Do sign up
+    *
+    * @Post("sign-up", as="doSignup")
+    */
+    public function doSignup(Request $request)
+    {
+
+        if($request['password_confirmation'] !== $request['password']){
+            return view('auth.signup', ['error' => 'Passwords don\'t match']);
+        } elseif(User::where('username', '=', $request['username'])->exists())
+        {
+            return view('auth.signup', ['error' => 'Username already used']);
+        } elseif (User::where('email', '=', $request['email'])->exists())
+        {
+            return view('auth.signup', ['error' => 'Email already used']);
+        }
+
+        $tmp = bcrypt($request['password']);
+        $user = User::create(['username' => $request['username'], 'email' => $request['email'], 'password' => $tmp, 'avatar' => 'avatars/default.jpg']);
+        if($request->hasFile('avatar')){
+            Image::make($request->file('avatar'))->resize(75, 75,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save('avatars/'.$request['username'].'_avatar.'.$request->file('avatar')->getClientOriginalExtension());
+            $user->avatar = 'avatars/'.$request['username'].'_avatar.'.$request->file('avatar')->getClientOriginalExtension();
+        }
+
+        $user->save();
+
+        Auth::attempt(['username' => $user->username, 'password' => $request['password']]);
+        return redirect()->intended('/');
+    }
+
+    /**
+    * Log the user out.
+    *
+    * @Get("logout", as="logout")
+    * @Middleware("auth")
+    *
+    * @return Response
+    */
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }
