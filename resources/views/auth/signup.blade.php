@@ -50,7 +50,7 @@
 						<ul class="actions">
 							<li>{!! Form::submit('S\'incrire') !!}</li>
                             <li>{!! Form::reset('Réinitialiser', array('class' => 'alt')) !!}</li>
-							<li><a href="{{ route('login') }}" class="button alt" />Se connecter</a></li>
+							<li><a href="{{ route('login') }}" />Page de connexion</a></li>
 						</ul>
 					</div>
 				</div>

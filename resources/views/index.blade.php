@@ -49,7 +49,6 @@
             </section>
             <!-- Main -->
             <section id="main" class="container">
-
                 <section class="box special">
                     <header class="major">
                         <h2>
@@ -66,7 +65,6 @@
                     </header>
                     <span class="image featured">{{ Html::image('images/pic01.jpg"') }}</span>
                 </section>
-
                 <section class="box special features">
                     <div class="features-row">
                         <section>
@@ -93,7 +91,6 @@
                         </section>
                     </div>
                 </section>
-
                 <div class="row">
                     <div class="6u 12u(narrower)">
 
@@ -122,7 +119,6 @@
 
                     </div> --}}
                 </div>
-
                 <div class="box 12u">
                     <h3>Autre faits</h3>
 					<div class="row">
@@ -134,7 +130,6 @@
 						</div>
 					</div>
         		</div>
-
             </section>
             @include('partials._footer')
         </div>
