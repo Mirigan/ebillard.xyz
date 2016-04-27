@@ -14,7 +14,7 @@
 		</header>
 
         <div class="box 12u 12u(mobilep)">
-			<h3>Le site sera de nouveau disponible</h3>
+			<h3>Le site sera de nouveau disponible, très bientot</h3>
 		</div>
 
     </section>
