@@ -49,8 +49,10 @@
                             </div>
                             @if($user->avatar != 'avatars/default.jpg')
                                 <div class="10u 12u(mobilep)">
-                                    {!! Form::checkbox('deleteAvatar', 'true', false, array('id' => 1)); !!}
-                                    {!! Form::label('true', 'Avatar par défault'); !!}
+                                    <p>
+                                        {!! Form::checkbox('deleteAvatar', 'yes', false,  array('id' => 'deleteAvatar')); !!}
+                                        {!! Form::label('deleteAvatar', 'Avatar par défault'); !!}
+                                    </p>
                                 </div>
                             @endif
                         </div>
