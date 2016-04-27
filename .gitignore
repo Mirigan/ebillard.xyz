@@ -3,6 +3,7 @@
 
 ### Laravel ###
 vendor/
+config/image.php
 public/avatars/*
 public/articles/*
 !public/avatars/default.jpg

@@ -113,6 +113,8 @@ class ArticleController extends Controller
         if($request->hasFile('image')){
             Image::make($request->file('image'))->save('articles/'.$article->title.'.'.$request->file('image')->getClientOriginalExtension());
             $article->image = 'articles/'.$article->title.'.'.$request->file('image')->getClientOriginalExtension();
+        }else{
+            $article->title = $article->title." No picture";
         }
 
         $article->update = Carbon::now()->format('Y-m-d');
