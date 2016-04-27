@@ -65,7 +65,7 @@ class AccountController extends Controller
                 return view('account.profile', ['user' => $user, 'error' => 'Passwords don\'t match']);
         }
 
-        if($inputs['deleteAvatar']){
+        if($inputs['deleteAvatar'] == "yes"){
             File::delete('public/'.$user->avatar);
             $user->avatar = 'avatars/default.jpg';
         }

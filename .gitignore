@@ -4,6 +4,7 @@
 ### Laravel ###
 vendor/
 public/avatars/*
+public/articles/*
 !public/avatars/default.jpg
 node_modules/
 
