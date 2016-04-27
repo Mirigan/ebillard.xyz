@@ -50,6 +50,9 @@
             <!-- Main -->
             <section id="main" class="container">
                 <section class="box special">
+                    <p>
+                        Ce site est une beta, tout est sujet a changement ou suppression.
+                    </p>
                     <header class="major">
                         <h2>
                             Développeur web,
