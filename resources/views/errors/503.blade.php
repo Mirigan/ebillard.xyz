@@ -1,7 +1,7 @@
 @extends('layouts.skeleton')
 
 @section('title')
-    Be right back
+    Site en maintenance
 @endsection
 
 @section('content')
@@ -9,12 +9,12 @@
     <section id="main" class="container">
 
         <header>
-			<h2>Be right back</h2>
+			<h2>Site en maintenance</h2>
             <p>Error 503</p>
 		</header>
 
         <div class="box 12u 12u(mobilep)">
-			<h3>Site en maintenance</h3>
+			<h3>Le site sera de nouveau disponible</h3>
 		</div>
 
     </section>
