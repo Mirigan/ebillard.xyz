@@ -34,7 +34,7 @@ class ArticleController extends Controller
     */
     public function doNewArticle(Request $request)
     {
-        $inputs = $request->only('title', 'description', 'subtitle', 'content', 'image');
+        $inputs = $request->only('title', 'description', 'subtitle', 'content', 's');
 
         if(Article::where('title', '=', $inputs['title'])->exists()){
             return view('admin.article.new', ['error' => 'Title already used']);
@@ -110,17 +110,17 @@ class ArticleController extends Controller
             $article->description = $inputs['description'];
         if ($inputs['subtitle'] != null)
             $article->subtitle = $inputs['subtitle'];
+
         if($request->hasFile('image')){
-            Image::make($request->file('image'))->save('articles/'.$article->title.'.'.$request->file('image')->getClientOriginalExtension());
+            Image::make($request->file('image'))
+            ->save('articles/'.$article->title.'.'.$request->file('image')->getClientOriginalExtension());
             $article->image = 'articles/'.$article->title.'.'.$request->file('image')->getClientOriginalExtension();
-        }else{
-            $article->title = $article->title." No picture";
         }
 
         $article->update = Carbon::now()->format('Y-m-d');
         $article->save();
 
-        return redirect()->route('admin.article.all');
+        return redirect()->route('admin.article', array('id' => $article->id));
     }
 
     /**

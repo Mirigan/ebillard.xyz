@@ -80,7 +80,6 @@ class AccountController extends Controller
 
         $user->save();
 
-
         return redirect()->route('account');
     }
 }
