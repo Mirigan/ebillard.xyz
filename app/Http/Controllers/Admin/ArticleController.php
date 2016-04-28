@@ -129,7 +129,7 @@ class ArticleController extends Controller
     */
     public function deleteArticle($id)
     {
-        $article = Aricle::find($id);
+        $article = Article::find($id);
         if ($article == null) {
             return response()->view('errors.articleNotFound', [], 404);
         }
