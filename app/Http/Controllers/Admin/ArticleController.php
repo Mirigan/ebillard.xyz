@@ -104,12 +104,11 @@ class ArticleController extends Controller
         }
 
         $inputs = $request->only('title', 'description', 'subtitle', 'content', 'image');
-        if ($inputs['title'] != null)
-            $article->title = $inputs['title'];
-        if ($inputs['description'] != null)
-            $article->description = $inputs['description'];
-        if ($inputs['subtitle'] != null)
-            $article->subtitle = $inputs['subtitle'];
+
+        $article->title = $inputs['title'];
+        $article->description = $inputs['description'];
+        $article->subtitle = $inputs['subtitle'];
+        $article->content = $inputs['content'];
 
         if($request->hasFile('image')){
             Image::make($request->file('image'))
