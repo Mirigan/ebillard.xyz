@@ -134,6 +134,8 @@ class ArticleController extends Controller
             return response()->view('errors.articleNotFound', [], 404);
         }
 
+        $article->delete();
+
         return redirect()->route('admin.article.all');
     }
 }
