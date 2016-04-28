@@ -48,7 +48,7 @@ class ArticleController extends Controller
         $article->date = Carbon::now()->format('Y-m-d');
 
         $article->save();
-        return redirect()->route('admin.article.all');
+        return redirect()->route('admin.article', array('id' => $artile->id));
     }
 
     /**
